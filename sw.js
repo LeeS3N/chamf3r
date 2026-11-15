@@ -1,0 +1,85 @@
+const CACHE = "chamf3r-v3.3";
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./assets/fraunces-latin-500-italic-Bp1RWfBU.woff",
+  "./assets/fraunces-latin-500-italic-CjxnbVsv.woff2",
+  "./assets/fraunces-latin-500-normal-BTR4KCeb.woff",
+  "./assets/fraunces-latin-500-normal-DnGCNyPD.woff2",
+  "./assets/fraunces-latin-600-normal-BFCDtZfi.woff2",
+  "./assets/fraunces-latin-600-normal-DL5QCzvS.woff",
+  "./assets/fraunces-latin-700-normal-CEOla-zY.woff2",
+  "./assets/fraunces-latin-700-normal-DTjk5d1Q.woff",
+  "./assets/fraunces-latin-ext-500-italic-CzWJT2mH.woff",
+  "./assets/fraunces-latin-ext-500-italic-D-eTYFHX.woff2",
+  "./assets/fraunces-latin-ext-500-normal-BMcFk1Xs.woff",
+  "./assets/fraunces-latin-ext-500-normal-Z5DV8IzT.woff2",
+  "./assets/fraunces-latin-ext-600-normal-B0Dy4lqi.woff",
+  "./assets/fraunces-latin-ext-600-normal-BtzmzP0X.woff2",
+  "./assets/fraunces-latin-ext-700-normal-CanUGppC.woff2",
+  "./assets/fraunces-latin-ext-700-normal-DuBstVeD.woff",
+  "./assets/index-C2kPzv3M.js",
+  "./assets/inter-latin-400-normal-C38fXH4l.woff2",
+  "./assets/inter-latin-400-normal-CyCys3Eg.woff",
+  "./assets/inter-latin-500-normal-BL9OpVg8.woff",
+  "./assets/inter-latin-500-normal-Cerq10X2.woff2",
+  "./assets/inter-latin-600-normal-CiBQ2DWP.woff",
+  "./assets/inter-latin-600-normal-LgqL8muc.woff2",
+  "./assets/inter-latin-700-normal-BLAVimhd.woff",
+  "./assets/inter-latin-700-normal-Yt3aPRUw.woff2",
+  "./assets/inter-latin-ext-400-normal-77YHD8bZ.woff",
+  "./assets/inter-latin-ext-400-normal-C1nco2VV.woff2",
+  "./assets/inter-latin-ext-500-normal-BxGbmqWO.woff",
+  "./assets/inter-latin-ext-500-normal-CV4jyFjo.woff2",
+  "./assets/inter-latin-ext-600-normal-CIVaiw4L.woff",
+  "./assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2",
+  "./assets/inter-latin-ext-700-normal-Ca8adRJv.woff2",
+  "./assets/inter-latin-ext-700-normal-TidjK2hL.woff",
+  "./assets/style-CP-enNWA.css",
+  "./covers/close-to-the-chest.jpg",
+  "./covers/morning-window.jpg",
+  "./covers/play-it-low.jpg",
+  "./data/COPYING",
+  "./data/NOTICE",
+  "./data/eng-tur.min.json",
+  "./data/examples.min.json",
+  "./data/freq.min.json",
+  "./data/ipa.min.json",
+  "./icons/favicon-32.png",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/icon-maskable-512.png",
+  "./sounds/done.wav",
+  "./sounds/flip.wav",
+  "./sounds/miss.wav",
+  "./sounds/ok.wav",
+  "./sounds/tick.wav",
+  "./splash/splash-portrait.png",
+  "./splash/splash-square.png"
+];
+self.addEventListener("install", (e) => {
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+});
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())
+  );
+});
+self.addEventListener("fetch", (e) => {
+  const req = e.request;
+  if (req.method !== "GET") return;
+  if (!req.url.startsWith(self.location.origin)) return;
+  e.respondWith(
+    caches.match(req).then((hit) => {
+      if (hit) return hit;
+      return fetch(req).then((res) => {
+        const copy = res.clone();
+        if (res.ok && req.url.startsWith(self.location.origin)) {
+          caches.open(CACHE).then((c) => c.put(req, copy));
+        }
+        return res;
+      }).catch(() => caches.match("./index.html"));
+    })
+  );
+});

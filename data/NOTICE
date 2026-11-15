@@ -1,0 +1,29 @@
+Chamf3r offline English-Turkish dictionary
+==========================================
+
+The bundled word list is derived from the FreeDict English-Turkish
+dictionary, version 0.3 (36,589 headwords in the upstream TEI source).
+
+  Source:  https://download.freedict.org/dictionaries/eng-tur/0.3/
+  Project: https://freedict.org/
+  License: GNU General Public License version 2.0 or later
+           (see data/COPYING)
+
+Upstream notes that the lexical data was taken from the GPL program
+gtksozluk2 by Mehmet Ali Vardar, then converted to TEI by the FreeDict
+project (Michael Bunk, Piotr Bański, Sebastian Humenda, and others).
+
+What Chamf3r changed
+--------------------
+tools/build_dict.py reads the official eng-tur.tei file and writes a
+compact JSON file (data/eng-tur.min.json) for offline lookup. Meanings
+are trimmed to short senses; a small set of function words and
+contractions is prepended for song-lyric coverage. No FreeDict files
+were used except this derived JSON and the accompanying license texts.
+
+To rebuild the JSON from the official source:
+
+  curl -L -o /tmp/freedict-eng-tur-0.3.src.tar.xz \
+    https://download.freedict.org/dictionaries/eng-tur/0.3/freedict-eng-tur-0.3.src.tar.xz
+  tar -xJf /tmp/freedict-eng-tur-0.3.src.tar.xz
+  python3 tools/build_dict.py path/to/eng-tur.tei data/eng-tur.min.json
