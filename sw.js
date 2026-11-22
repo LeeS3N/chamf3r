@@ -1,4 +1,4 @@
-const CACHE = "chamf3r-3.6.9-012981a184";
+const CACHE = "chamf3r-3.6.10-086a9e859d";
 const ASSETS = [
   "./",
   "./index.html",
@@ -19,7 +19,7 @@ const ASSETS = [
   "./assets/fraunces-latin-ext-600-normal-BtzmzP0X.woff2",
   "./assets/fraunces-latin-ext-700-normal-CanUGppC.woff2",
   "./assets/fraunces-latin-ext-700-normal-DuBstVeD.woff",
-  "./assets/index-DoAEI7AX.js",
+  "./assets/index-D7DJFW_z.js",
   "./assets/inter-latin-400-normal-C38fXH4l.woff2",
   "./assets/inter-latin-400-normal-CyCys3Eg.woff",
   "./assets/inter-latin-500-normal-BL9OpVg8.woff",
@@ -36,7 +36,7 @@ const ASSETS = [
   "./assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2",
   "./assets/inter-latin-ext-700-normal-Ca8adRJv.woff2",
   "./assets/inter-latin-ext-700-normal-TidjK2hL.woff",
-  "./assets/scene-DUsDz85M.js",
+  "./assets/scene-EOFE0CuE.js",
   "./assets/style-CyAXXUus.css",
   "./covers/close-to-the-chest.jpg",
   "./covers/morning-window.jpg",
