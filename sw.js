@@ -1,4 +1,4 @@
-const CACHE = "chamf3r-3.7.5-68a63cb47f";
+const CACHE = "chamf3r-3.7.6-68a63cb47f";
 const ASSETS = [
   "./",
   "./index.html",
