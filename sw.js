@@ -1,9 +1,9 @@
-const CACHE = "chamf3r-3.7.4-d338f8d208";
+const CACHE = "chamf3r-3.7.5-68a63cb47f";
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./assets/Academy-LT30oXMf.js",
+  "./assets/Academy-BJy3fMca.js",
   "./assets/fraunces-latin-500-italic-Bp1RWfBU.woff",
   "./assets/fraunces-latin-500-italic-CjxnbVsv.woff2",
   "./assets/fraunces-latin-500-normal-BTR4KCeb.woff",
@@ -20,7 +20,7 @@ const ASSETS = [
   "./assets/fraunces-latin-ext-600-normal-BtzmzP0X.woff2",
   "./assets/fraunces-latin-ext-700-normal-CanUGppC.woff2",
   "./assets/fraunces-latin-ext-700-normal-DuBstVeD.woff",
-  "./assets/index-AuBTofYU.js",
+  "./assets/index-D8wVX2ME.js",
   "./assets/inter-latin-400-normal-C38fXH4l.woff2",
   "./assets/inter-latin-400-normal-CyCys3Eg.woff",
   "./assets/inter-latin-500-normal-BL9OpVg8.woff",
@@ -37,9 +37,9 @@ const ASSETS = [
   "./assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2",
   "./assets/inter-latin-ext-700-normal-Ca8adRJv.woff2",
   "./assets/inter-latin-ext-700-normal-TidjK2hL.woff",
-  "./assets/scene-DryexKqK.js",
+  "./assets/scene-CQcwwScK.js",
   "./assets/scene-fTvKsHzH.js",
-  "./assets/style-dIVnVKuy.css",
+  "./assets/style-i10h7Gen.css",
   "./assets/three.module-C9aLZRkb.js",
   "./covers/close-to-the-chest.jpg",
   "./covers/morning-window.jpg",
