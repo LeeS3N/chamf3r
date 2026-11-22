@@ -1,4 +1,4 @@
-const CACHE = "chamf3r-3.6.12-e742c4cbd7";
+const CACHE = "chamf3r-3.7.0-3a58acc514";
 const ASSETS = [
   "./",
   "./index.html",
@@ -37,7 +37,7 @@ const ASSETS = [
   "./assets/inter-latin-ext-700-normal-Ca8adRJv.woff2",
   "./assets/inter-latin-ext-700-normal-TidjK2hL.woff",
   "./assets/scene-DK4p-HLB.js",
-  "./assets/style-Y9Ex-2GD.css",
+  "./assets/style-D-F0p_NU.css",
   "./covers/close-to-the-chest.jpg",
   "./covers/morning-window.jpg",
   "./covers/play-it-low.jpg",
