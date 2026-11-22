@@ -1,4 +1,4 @@
-const CACHE = "chamf3r-v3.3";
+const CACHE = "chamf3r-3.4.0-9039b2a6f4";
 const ASSETS = [
   "./",
   "./index.html",
@@ -19,7 +19,7 @@ const ASSETS = [
   "./assets/fraunces-latin-ext-600-normal-BtzmzP0X.woff2",
   "./assets/fraunces-latin-ext-700-normal-CanUGppC.woff2",
   "./assets/fraunces-latin-ext-700-normal-DuBstVeD.woff",
-  "./assets/index-C2kPzv3M.js",
+  "./assets/index-BsLHhBI_.js",
   "./assets/inter-latin-400-normal-C38fXH4l.woff2",
   "./assets/inter-latin-400-normal-CyCys3Eg.woff",
   "./assets/inter-latin-500-normal-BL9OpVg8.woff",
@@ -36,7 +36,7 @@ const ASSETS = [
   "./assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2",
   "./assets/inter-latin-ext-700-normal-Ca8adRJv.woff2",
   "./assets/inter-latin-ext-700-normal-TidjK2hL.woff",
-  "./assets/style-CP-enNWA.css",
+  "./assets/style-Ddw5-4DR.css",
   "./covers/close-to-the-chest.jpg",
   "./covers/morning-window.jpg",
   "./covers/play-it-low.jpg",
@@ -70,6 +70,15 @@ self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
   if (!req.url.startsWith(self.location.origin)) return;
+  // v3.4: pages are network-first (a deploy shows up on the next visit), cached copy when offline
+  if (req.mode === "navigate") {
+    e.respondWith(fetch(req).then((res) => {
+      const copy = res.clone();
+      if (res.ok) caches.open(CACHE).then((c) => c.put("./index.html", copy));
+      return res;
+    }).catch(() => caches.match("./index.html")));
+    return;
+  }
   e.respondWith(
     caches.match(req).then((hit) => {
       if (hit) return hit;
