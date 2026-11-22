@@ -1,4 +1,4 @@
-const CACHE = "chamf3r-3.4.0-9039b2a6f4";
+const CACHE = "chamf3r-3.5.0-757c7d6b6f";
 const ASSETS = [
   "./",
   "./index.html",
@@ -19,7 +19,7 @@ const ASSETS = [
   "./assets/fraunces-latin-ext-600-normal-BtzmzP0X.woff2",
   "./assets/fraunces-latin-ext-700-normal-CanUGppC.woff2",
   "./assets/fraunces-latin-ext-700-normal-DuBstVeD.woff",
-  "./assets/index-BsLHhBI_.js",
+  "./assets/index-PzndPwcW.js",
   "./assets/inter-latin-400-normal-C38fXH4l.woff2",
   "./assets/inter-latin-400-normal-CyCys3Eg.woff",
   "./assets/inter-latin-500-normal-BL9OpVg8.woff",
@@ -36,7 +36,7 @@ const ASSETS = [
   "./assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2",
   "./assets/inter-latin-ext-700-normal-Ca8adRJv.woff2",
   "./assets/inter-latin-ext-700-normal-TidjK2hL.woff",
-  "./assets/style-Ddw5-4DR.css",
+  "./assets/style-BSffPCl8.css",
   "./covers/close-to-the-chest.jpg",
   "./covers/morning-window.jpg",
   "./covers/play-it-low.jpg",
@@ -91,4 +91,14 @@ self.addEventListener("fetch", (e) => {
       }).catch(() => caches.match("./index.html"));
     })
   );
+});
+
+// v3.5: tapping a reminder focuses/opens Chamf3r and starts the lesson
+self.addEventListener("notificationclick", (e) => {
+  e.notification.close();
+  const action = (e.notification.data && e.notification.data.action) || "lesson";
+  e.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((list) => {
+    for (const c of list) { if ("focus" in c) { c.postMessage({ chamf3rAction: action }); return c.focus(); } }
+    return self.clients.openWindow("./?go=" + action);
+  }));
 });

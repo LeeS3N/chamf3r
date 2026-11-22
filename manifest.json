@@ -38,5 +38,55 @@
       "text": "text",
       "url": "url"
     }
-  }
+  },
+  "shortcuts": [
+    {
+      "name": "Bugünkü ders",
+      "short_name": "Ders",
+      "description": "Tekrarlar ve yeni dizeler",
+      "url": "./?go=lesson",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Günlük tekrar",
+      "short_name": "Tekrar",
+      "description": "Bekleyen kartlar",
+      "url": "./?go=review",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Oyunlar",
+      "short_name": "Oyunlar",
+      "description": "Söz Yağmuru, Hızlı Tur, Düello",
+      "url": "./?go=games",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Günün şarkısı",
+      "short_name": "Günün şarkısı",
+      "description": "5 dakikalık görev",
+      "url": "./?go=daily",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
 }
